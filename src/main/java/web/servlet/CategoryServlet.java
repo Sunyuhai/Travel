@@ -16,11 +16,11 @@ public class CategoryServlet extends BaseServlet {
     private CategoryService service = new CategoryServiceImpl();
     public void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Object user = request.getSession().getAttribute("user");
+        List<Category> list = null;
         if (user != null){
-            List<Category> list = service.findAll();
+            list = service.findAll();
             writeValueToOutputStream(list,response);
         }else{
-            List<Category> list = null;
             writeValueToOutputStream(list,response);
         }
     }
