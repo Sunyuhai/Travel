@@ -21,7 +21,7 @@ public class CategoryServlet extends BaseServlet {
             list = service.findAll();
             writeValueToOutputStream(list,response);
         }else{
-            writeValueToOutputStream(list,response);
+            writeValueToOutputStream(1,response);
         }
     }
 
