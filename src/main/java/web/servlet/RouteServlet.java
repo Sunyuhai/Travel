@@ -28,7 +28,7 @@ public class RouteServlet extends BaseServlet {
             rname=" ";
         }
         //将参数转换为整数类型
-        int cid = 1;
+        int cid = 0;
         if(cid_str!=null && cid_str.length() >0 && !cid_str.equals("null")){
             cid = Integer.parseInt(cid_str);
         }

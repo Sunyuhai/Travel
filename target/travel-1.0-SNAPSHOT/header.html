@@ -11,30 +11,29 @@ $(function () {
             }
         });
         $.get("category/findAll",{},function (data) {
-            //[{cid:1,cname:国内游},{},{}]
-            let lis = '<li class="nav-active"><a href="index.html">首页</a></li>';
-            //遍历数组,拼接字符串(<li>)
-            for (let i = 0; i < data.length; i++) {
-                const cid = data[i].cid;
-                const cname = data[i].cname;
-                const li = '<li><a href="http://localhost:8080/travel/route_list.html?cid='+cid+'&rname=">'+cname+'</a></li>';
-                lis += li;
+            if (data = null){
+                return;
+            }else{
+                let lis = '<li class="nav-active"><a href="index.html">首页</a></li>';
+                //遍历数组,拼接字符串(<li>)
+                for (let i = 0; i < data.length; i++) {
+                    const cid = data[i].cid;
+                    const cname = data[i].cname;
+                    const li = '<li><a href="http://localhost:8080/travel/route_list.html?cid='+cid+'&rname=">'+cname+'</a></li>';
+                    lis += li;
+                }
+                //拼接收藏排行榜的li,<li><a href="favoriterank.html">收藏排行榜</a></li>
+                lis+= '<li><a href="favoriterank.html">收藏排行榜</a></li>';
+                //将lis字符串，设置到ul的html内容中
+                $("#category").html(lis);
+                //获取输入框的值
             }
-            //拼接收藏排行榜的li,<li><a href="favoriterank.html">收藏排行榜</a></li>
-            lis+= '<li><a href="favoriterank.html">收藏排行榜</a></li>';
-            //将lis字符串，设置到ul的html内容中
-            $("#category").html(lis);
-            //获取输入框的值
         });
         $("#search-button").click(function () {
             //线路名称
             const rname = $("#search_input").val();
             const cid = getParameter("cid");
-            if(cid == null){
-                location.href="http://localhost:8080/travel/route_list.html?cid="+5+"&rname="+rname;
-            }else{
-                location.href="http://localhost:8080/travel/route_list.html?cid="+cid+"&rname="+rname;
-            }
+            location.href="http://localhost:8080/travel/route_list.html?cid="+cid+"&rname="+rname;
 
         });
     })

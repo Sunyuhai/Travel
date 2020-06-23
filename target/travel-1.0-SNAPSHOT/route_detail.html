@@ -147,6 +147,8 @@
                 // var timer = setInterval("auto_play()", 5000);
             });
         }
+
+
         $(function () {
             const rid = getParameter("rid");
             $.post("route/routeInfo",{rid:rid},function (route) {
@@ -157,8 +159,9 @@
                 $("#consphone").html(route.seller.consphone);
                 $("#address").html(route.seller.address);
                 $("#dt").html('<img alt="" class="big_img" src="'+route.rimage+'">');
-                const count = 100+route.count;
+                const count = 0+route.count;
                 $("#fCount").html("已收藏"+count+"次");
+                //图片展示
                 let dds ='';
                 let last = '<a class="up_img up_img_disable"></a>';
                 dds += last;
@@ -219,7 +222,7 @@
         function fCount() {
             const rid = getParameter("rid");
             $.post("route/routeInfo",{rid:rid},function (route) {
-                const count = 100+route.count;
+                const count = 0+route.count;
                 $("#fCount").html("已收藏"+count+"次");
             });
         }

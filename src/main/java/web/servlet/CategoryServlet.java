@@ -15,8 +15,14 @@ import java.util.List;
 public class CategoryServlet extends BaseServlet {
     private CategoryService service = new CategoryServiceImpl();
     public void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Category> list = service.findAll();
-        writeValueToOutputStream(list,response);
+        Object user = request.getSession().getAttribute("user");
+        if (user != null){
+            List<Category> list = service.findAll();
+            writeValueToOutputStream(list,response);
+        }else{
+            List<Category> list = null;
+            writeValueToOutputStream(list,response);
+        }
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

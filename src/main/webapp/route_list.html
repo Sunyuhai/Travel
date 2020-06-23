@@ -12,10 +12,10 @@
     <script src="js/getParameter.js"></script>
     <script>
         $(function () {
-            let cid = getParameter("cid");
+            let cid = getParameter("cid");//获取url后面的内容
             let rname = getParameter("rname");
             if(rname){
-                //解码
+                //解码  被url编码啦
                 rname = window.decodeURIComponent(rname);
             }
             load(cid,1,rname);
@@ -31,10 +31,12 @@
                     const currentPage = pb.currentPage;
 
                     //分页栏展示
+                    //上一页
                     let bePage = currentPage - 1;
                     if(bePage < 0){
                         bePage = 1;
                     }
+                    //下一页
                     let laPage = currentPage + 1;
                     if(laPage > totalPage){
                         laPage = totalPage;

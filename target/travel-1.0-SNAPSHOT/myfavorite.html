@@ -21,50 +21,7 @@
             $(function () {
                 page(1);
             });
-            /*$.post("favorite/myFavorite",{},function (pb) {
-                /!*旅游路线*!/
-                let divs = '';
-                for (let i = 0; i < pb.list.length ; i++) {
-                    const list = pb.list[i];
-                    let div = '<div class="col-md-3">\n' +
-                        '           <a href="route_detail.html">\n' +
-                        '                 <img src="'+list.rimage+'" alt="">\n' +
-                        '                 <div class="has_border">\n' +
-                        '                 <h3>'+list.rname+'</h3>\n' +
-                        '                 <div class="price">网付价<em>￥</em><strong>'+list.price+'</strong><em>起</em></div>\n' +
-                        '                 </div>\n' +
-                        '                </a>\n' +
-                        '           </div>';
-                    divs += div;
-                }
-                $("#myFavorite").html(divs);
-                const currentPage = pb.currentPage;
-                const totalCount = pb.totalCount;
-                const totalPage = pb.totalPage;
-                let lastP = currentPage-1;
-                if(lastP<1){
-                    lastP = 1;
-                }
-                let lis = '';
-                let li = '<li onclick="page('+1+')" ><a >首页</a></li> <li onclick="page('+ lastP +')" class="threeword"><a href="#">上一页</a></li>';
-                lis += li;
-                for (let i = 1; i <= totalPage; i++) {
-                    if(i===currentPage){
-                        li = '<li class="curPage" onclick="page('+i+')" ><a >'+i+'</a></li>';
-                    }else{
-                        li = '<li onclick="page('+i+')" ><a >'+i+'</a></li>';
-                    }
-                    lis += li;
-                }
-                let nextP = currentPage+1;
-                if(nextP > totalPage){
-                    nextP = totalPage;
-                }
-                li = '<li onclick="page('+ nextP +')" class="threeword"><a >下一页</a></li> ' +
-                    '<li onclick="page('+totalPage+')" class="threeword"><a >末页</a></li>';
-                lis += li;
-                $("#pageNum").html(lis);
-            });*/
+
             function page(id) {
                 $.post("favorite/myFavorite",{currentPage:id},function (pb) {
                     /*旅游路线*/
